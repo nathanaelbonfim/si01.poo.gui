@@ -4,9 +4,11 @@ import javax.swing.JComboBox;
 
 public class MeuJComboBox extends JComboBox implements MeuComponente {
     private String dica;
+    private Boolean obrigatorio;
 
-    public MeuJComboBox(String[] dados, String dica) {
+    public MeuJComboBox(String[] dados, String dica, Boolean obrigatorio) {
         this.dica = dica;
+        this.obrigatorio = obrigatorio;
 
         for (String dado : dados) {
             addItem(dado);
@@ -26,5 +28,11 @@ public class MeuJComboBox extends JComboBox implements MeuComponente {
     @Override
     public String getDica() {
         return dica;
+    }
+
+
+    @Override
+    public Boolean eObrigatorio() {
+        return obrigatorio;
     }
 }

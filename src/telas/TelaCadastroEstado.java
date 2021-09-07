@@ -3,9 +3,9 @@ package telas;
 import componentes.MeuJTextField;
 
 public class TelaCadastroEstado extends TelaCadastro {
-    private MeuJTextField jtfCodigo = new MeuJTextField(10, "Código");
-    private MeuJTextField jtfNome = new MeuJTextField(20, "Nome");
-    private MeuJTextField jtfSigla = new MeuJTextField(2, "Sigla");
+    private MeuJTextField jtfCodigo = new MeuJTextField(10, "Código", true);
+    private MeuJTextField jtfNome = new MeuJTextField(20, "Nome", true);
+    private MeuJTextField jtfSigla = new MeuJTextField(2, "Sigla", true);
 
     
     public TelaCadastroEstado() {

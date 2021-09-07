@@ -4,11 +4,13 @@ import javax.swing.JTextField;
 
 public class MeuJTextField extends JTextField implements MeuComponente {
     private String dica;
+    private Boolean obrigatorio;
 
-    public MeuJTextField(int tamanho, String dica) {
+    public MeuJTextField(int tamanho, String dica, Boolean obrigatorio) {
         super(tamanho);
 
         this.dica = dica;
+        this.obrigatorio = obrigatorio;
     }
 
     @Override
@@ -24,5 +26,10 @@ public class MeuJTextField extends JTextField implements MeuComponente {
     @Override
     public String getDica() {
         return dica;
+    }
+
+    @Override
+    public Boolean eObrigatorio() {
+        return obrigatorio;
     }
 }
