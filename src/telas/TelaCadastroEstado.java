@@ -18,15 +18,16 @@ public class TelaCadastroEstado extends TelaCadastro {
     
     public TelaCadastroEstado() {
         super("Cadastro de Estado");
-        jpComponentes.setLayout(new GridBagLayout());
 
         montaTela();
         pack();
     }
     
     public void montaTela() {
-        adicionaComponente(1, 1, 1, 1, jlCodigo, jtfCodigo);
-        adicionaComponente(3, 1, 1, 2, jlNome, jtfNome);
-        adicionaComponente(5, 1, 1, 1, jlSigla, jtfSigla);
+        adicionaComponente(1, 1, 1, 1, "Código", jtfCodigo);
+        adicionaComponente(3, 1, 1, 2, "Nome", jtfNome);
+        adicionaComponente(5, 1, 1, 1, "Sigla", jtfSigla);
+
+        habilitaComponentes(false);
     }
 }

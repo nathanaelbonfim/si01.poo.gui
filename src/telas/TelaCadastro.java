@@ -1,5 +1,7 @@
 package telas;
 
+import java.util.List;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
@@ -35,10 +37,13 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
     protected JPanel jpComponentes = new JPanel();
     private JPanel jpBotoes = new JPanel();
 
+    protected List<JTextField> componentes = new ArrayList();
+
     public TelaCadastro(String titulo) {
         super(titulo, true, true, true, true);
         setSize(800, 600);
 
+        jpComponentes.setLayout(new GridBagLayout());
         getContentPane().setLayout(new BorderLayout(2, 1));
         getContentPane().add(jpComponentes, "West");
 
@@ -92,7 +97,13 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
         }
     }
 
-    protected void adicionaComponente(int linha, int coluna, int linhasOcupadas, int colunasOcupadas, JLabel label, JTextField textField) {
+    protected void habilitaComponentes(Boolean status) {
+        for (JTextField componente : componentes) {
+            componente.setEnabled(status);
+        }
+    }
+
+    protected void adicionaComponente(int linha, int coluna, int linhasOcupadas, int colunasOcupadas, String label, JTextField textField) {
         GridBagConstraints gbc = new GridBagConstraints();
         // Alinhamento
         gbc.anchor = GridBagConstraints.WEST;
@@ -106,10 +117,12 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
         gbc.gridheight = linhasOcupadas;
         gbc.gridwidth = 1; // Inicialmente, ocupa 1 para a label
         
-        jpComponentes.add(label, gbc);
+        jpComponentes.add(new JLabel(label), gbc);
         gbc.gridwidth = colunasOcupadas; // Tamanho do input passado na classe
         gbc.gridy++;
         jpComponentes.add(textField, gbc);
+
+        componentes.add(textField);
     }
 
     public void incluir() {}
