@@ -127,10 +127,11 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
         gbc.gridheight = linhasOcupadas;
         gbc.gridwidth = 1; // Inicialmente, ocupa 1 para a label
         
-        String texto = component.getDica();
+        String texto = "<html><body>" + component.getDica();
         if (component.eObrigatorio()) {
-            texto = texto + "*";
+            texto = texto + "<font color=red>*" + "</font>";
         }
+        texto = texto + "</body></html>";
 
         jpComponentes.add(new JLabel(texto), gbc);
         gbc.gridwidth = colunasOcupadas; // Tamanho do input passado na classe
