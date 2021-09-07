@@ -1,13 +1,16 @@
-package sistema;
+package telas;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 public class TelaSistema extends JFrame implements ActionListener {
+    public static JDesktopPane jdp = new JDesktopPane();
     private JMenuBar jmb;
 
     private JMenu jmCadastros, jmMovimentos, jmRelatorios;
@@ -17,10 +20,10 @@ public class TelaSistema extends JFrame implements ActionListener {
     public TelaSistema(String titulo) {
         super(titulo);
         setSize(800, 600);
-        setVisible(true);
-        montaMenu();
-        adicionaListeners();
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+        montaMenu();
+        getContentPane().add(jdp);
+        setVisible(true);
     }
 
     private void montaMenu() {
@@ -36,6 +39,7 @@ public class TelaSistema extends JFrame implements ActionListener {
         jmb.add(jmRelatorios);
 
         montaItensMenu();
+        adicionaListeners();
     }
 
     private void montaItensMenu() {
@@ -63,15 +67,20 @@ public class TelaSistema extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == jmiEstados) {
-            System.out.println("Cadastro de Estados");
+            TelaCadastro telaCadastroEstados = new TelaCadastro("Cadastro de Estados");
+            // jdp.add(telaCadastroEstados);
         } else if (ae.getSource() == jmiCidades) {
-            System.out.println("Cadastro de Cidades");
+            TelaCadastro telaCadastroCidades = new TelaCadastro("Cadastro de Cidades");
+            // jdp.add(telaCadastroCidades);
         }else if (ae.getSource() == jmiClientes) {
-            System.out.println("Cadastro de Clientes");
+            TelaCadastro telaCadastroClientes = new TelaCadastro("Cadastro de Clientes");
+            // jdp.add(telaCadastroClientes);
         } else if (ae.getSource() == jmiFornecedores) {
-            System.out.println("Cadastro de Fornecedores");
+            TelaCadastro telaCadastroFornecedores = new TelaCadastro("Cadastro de Fornecedores");
+            // jdp.add(telaCadastroFornecedores);
         } else if (ae.getSource() == jmiProdutos) {
-            System.out.println("Cadastro de Produtos");
+            TelaCadastro telaCadastroProdutos = new TelaCadastro("Cadastro de Produtos");
+            // jdp.add(telaCadastroProdutos);
         }
     }
 }

@@ -1,4 +1,4 @@
-import sistema.TelaSistema;
+import telas.TelaSistema;
 
 public class App {
     public static void main(String[] args) throws Exception {
