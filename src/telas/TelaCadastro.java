@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import componentes.MeuComponente;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -37,7 +40,7 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
     protected JPanel jpComponentes = new JPanel();
     private JPanel jpBotoes = new JPanel();
 
-    protected List<JTextField> componentes = new ArrayList();
+    protected List<MeuComponente> componentes = new ArrayList();
 
     public TelaCadastro(String titulo) {
         super(titulo, true, true, true, true);
@@ -105,12 +108,12 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
     }
 
     protected void habilitaComponentes(Boolean status) {
-        for (JTextField componente : componentes) {
-            componente.setEnabled(status);
+        for (MeuComponente componente : componentes) {
+            componente.habilitar(status);
         }
     }
 
-    protected void adicionaComponente(int linha, int coluna, int linhasOcupadas, int colunasOcupadas, String label, JTextField textField) {
+    protected void adicionaComponente(int linha, int coluna, int linhasOcupadas, int colunasOcupadas, String label, MeuComponente component) {
         GridBagConstraints gbc = new GridBagConstraints();
         // Alinhamento
         gbc.anchor = GridBagConstraints.WEST;
@@ -127,9 +130,9 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
         jpComponentes.add(new JLabel(label), gbc);
         gbc.gridwidth = colunasOcupadas; // Tamanho do input passado na classe
         gbc.gridy++;
-        jpComponentes.add(textField, gbc);
+        jpComponentes.add((JComponent) component, gbc);
 
-        componentes.add(textField);
+        componentes.add(component);
     }
 
     public void incluir() {
@@ -149,9 +152,9 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
         estadoTela = PADRAO;
 
         // Limpa os componentes
-        for (JTextField componente: componentes) {
-            componente.setText("");
-        }
+       for (MeuComponente componente: componentes) {
+           componente.limpar();
+       }
 
         habilitaComponentes(false);
         habilitaBotoes();

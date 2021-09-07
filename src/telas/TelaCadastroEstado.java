@@ -3,17 +3,15 @@ package telas;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import componentes.MeuJTextField;
+
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 public class TelaCadastroEstado extends TelaCadastro {
-    private JTextField jtfCodigo = new JTextField(10);
-    private JTextField jtfNome = new JTextField(20);
-    private JTextField jtfSigla = new JTextField(2);
-
-    private JLabel jlCodigo = new JLabel("Código");
-    private JLabel jlNome = new JLabel("Nome");
-    private JLabel jlSigla = new JLabel("Sigla");
+    private MeuJTextField jtfCodigo = new MeuJTextField(10);
+    private MeuJTextField jtfNome = new MeuJTextField(20);
+    private MeuJTextField jtfSigla = new MeuJTextField(2);
 
     
     public TelaCadastroEstado() {
