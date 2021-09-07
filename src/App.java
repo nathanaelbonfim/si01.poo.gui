@@ -1,5 +1,7 @@
+import telas.TelaSistema;
+
 public class App {
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        TelaSistema telaPrincipal = new TelaSistema("Uma tela qualquer");
     }
 }
