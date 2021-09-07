@@ -67,19 +67,19 @@ public class TelaSistema extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == jmiEstados) {
-            TelaCadastro telaCadastroEstados = new TelaCadastro("Cadastro de Estados");
+            TelaCadastroEstado telaCadastroEstados = new TelaCadastroEstado();
             // jdp.add(telaCadastroEstados);
         } else if (ae.getSource() == jmiCidades) {
-            TelaCadastro telaCadastroCidades = new TelaCadastro("Cadastro de Cidades");
+            TelaCadastroCidade telaCadastroCidades = new TelaCadastroCidade();
             // jdp.add(telaCadastroCidades);
         }else if (ae.getSource() == jmiClientes) {
-            TelaCadastro telaCadastroClientes = new TelaCadastro("Cadastro de Clientes");
+            TelaCadastroCliente telaCadastroClientes = new TelaCadastroCliente();
             // jdp.add(telaCadastroClientes);
         } else if (ae.getSource() == jmiFornecedores) {
-            TelaCadastro telaCadastroFornecedores = new TelaCadastro("Cadastro de Fornecedores");
+            TelaCadastroFornecedor telaCadastroFornecedores = new TelaCadastroFornecedor();
             // jdp.add(telaCadastroFornecedores);
         } else if (ae.getSource() == jmiProdutos) {
-            TelaCadastro telaCadastroProdutos = new TelaCadastro("Cadastro de Produtos");
+            TelaCadastroProduto telaCadastroProdutos = new TelaCadastroProduto();
             // jdp.add(telaCadastroProdutos);
         }
     }

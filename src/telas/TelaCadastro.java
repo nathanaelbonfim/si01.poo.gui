@@ -2,12 +2,14 @@ package telas;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.GridLayout;
+import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-public class TelaCadastro extends JInternalFrame implements ActionListener {
+public abstract class TelaCadastro extends JInternalFrame implements ActionListener {
     // Estados das telas
     private final int PADRAO = 0;
     private final int INCLUINDO = 1;
@@ -25,11 +27,18 @@ public class TelaCadastro extends JInternalFrame implements ActionListener {
 
     private int estadoTela = PADRAO;
 
+    protected JPanel jpComponentes = new JPanel();
+    private JPanel jpBotoes = new JPanel();
+
     public TelaCadastro(String titulo) {
         super(titulo, true, true, true, true);
         setSize(800, 600);
 
-        getContentPane().setLayout(new GridLayout(1, 6));
+        getContentPane().setLayout(new BorderLayout(2, 1));
+        getContentPane().add(jpComponentes, "Center");
+        jpComponentes.add(new JLabel("Olá"));
+
+        getContentPane().add(jpBotoes, "South");
         
         adicionaBotao(jbIncluir);
         adicionaBotao(jbAlterar);
@@ -47,7 +56,7 @@ public class TelaCadastro extends JInternalFrame implements ActionListener {
     }
 
     private void adicionaBotao(JButton botao) {
-        getContentPane().add(botao);
+        jpBotoes.add(botao);
         botao.addActionListener(this);
     }
 
