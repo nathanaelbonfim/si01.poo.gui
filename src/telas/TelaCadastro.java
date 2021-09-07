@@ -113,7 +113,7 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
         }
     }
 
-    protected void adicionaComponente(int linha, int coluna, int linhasOcupadas, int colunasOcupadas, String label, MeuComponente component) {
+    protected void adicionaComponente(int linha, int coluna, int linhasOcupadas, int colunasOcupadas, MeuComponente component) {
         GridBagConstraints gbc = new GridBagConstraints();
         // Alinhamento
         gbc.anchor = GridBagConstraints.WEST;
@@ -127,7 +127,7 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
         gbc.gridheight = linhasOcupadas;
         gbc.gridwidth = 1; // Inicialmente, ocupa 1 para a label
         
-        jpComponentes.add(new JLabel(label), gbc);
+        jpComponentes.add(new JLabel(component.getDica()), gbc);
         gbc.gridwidth = colunasOcupadas; // Tamanho do input passado na classe
         gbc.gridy++;
         jpComponentes.add((JComponent) component, gbc);

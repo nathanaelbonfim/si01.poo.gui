@@ -7,11 +7,11 @@ import componentes.MeuJComboBox;
 import componentes.MeuJTextField;
 
 public class TelaCadastroCidade extends TelaCadastro {
-    private MeuJTextField jtfNome   = new MeuJTextField(20);
-    private MeuJTextField jtfCodigo = new MeuJTextField(10);
+    private MeuJTextField jtfNome   = new MeuJTextField(20, "Nome");
+    private MeuJTextField jtfCodigo = new MeuJTextField(10, "Código");
 
     private String[] dados = {"PR", "SP"};
-    private MeuJComboBox jcbEstado  = new MeuJComboBox(dados);
+    private MeuJComboBox jcbEstado  = new MeuJComboBox(dados, "Estado");
 
     public TelaCadastroCidade() {
         super("Cadastro de Cidade");
@@ -20,9 +20,9 @@ public class TelaCadastroCidade extends TelaCadastro {
     }
 
     private void montaTela() {
-        adicionaComponente(3, 1, 1, 2, "Nome", jtfNome);
-        adicionaComponente(1, 1, 1, 1, "Código", jtfCodigo);
-        adicionaComponente(5, 1, 1, 1, "Estado", jcbEstado);
+        adicionaComponente(3, 1, 1, 2, jtfNome);
+        adicionaComponente(1, 1, 1, 1, jtfCodigo);
+        adicionaComponente(5, 1, 1, 1, jcbEstado);
 
         habilitaComponentes(false);
     }
