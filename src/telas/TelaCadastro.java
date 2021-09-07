@@ -94,6 +94,13 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
             jbConsultar.setEnabled(true);
             jbConfirmar.setEnabled(false);
             jbCancelar.setEnabled(false);
+        } else if (estadoTela == INCLUINDO) {
+            jbIncluir.setEnabled(true);
+            jbAlterar.setEnabled(false);
+            jbExcluir.setEnabled(false);
+            jbConsultar.setEnabled(false);
+            jbConfirmar.setEnabled(true);
+            jbCancelar.setEnabled(true);
         }
     }
 
@@ -125,10 +132,28 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
         componentes.add(textField);
     }
 
-    public void incluir() {}
+    public void incluir() {
+        estadoTela = INCLUINDO;
+        habilitaComponentes(true);
+        habilitaBotoes();
+    }
     public void alterar() {}
     public void excluir() {}
     public void consultar() {}
-    public void confirmar() {}
-    public void cancelar() {}
+    public void confirmar() {
+        estadoTela = PADRAO;
+        habilitaComponentes(false);
+        habilitaBotoes();
+    }
+    public void cancelar() {
+        estadoTela = PADRAO;
+
+        // Limpa os componentes
+        for (JTextField componente: componentes) {
+            componente.setText("");
+        }
+
+        habilitaComponentes(false);
+        habilitaBotoes();
+    }
 }
