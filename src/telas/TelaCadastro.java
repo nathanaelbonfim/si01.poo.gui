@@ -1,13 +1,18 @@
 package telas;
 
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public abstract class TelaCadastro extends JInternalFrame implements ActionListener {
     // Estados das telas
@@ -35,8 +40,7 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
         setSize(800, 600);
 
         getContentPane().setLayout(new BorderLayout(2, 1));
-        getContentPane().add(jpComponentes, "Center");
-        jpComponentes.add(new JLabel("Olá"));
+        getContentPane().add(jpComponentes, "West");
 
         getContentPane().add(jpBotoes, "South");
         
@@ -86,6 +90,26 @@ public abstract class TelaCadastro extends JInternalFrame implements ActionListe
             jbConfirmar.setEnabled(false);
             jbCancelar.setEnabled(false);
         }
+    }
+
+    protected void adicionaComponente(int linha, int coluna, int linhasOcupadas, int colunasOcupadas, JLabel label, JTextField textField) {
+        GridBagConstraints gbc = new GridBagConstraints();
+        // Alinhamento
+        gbc.anchor = GridBagConstraints.WEST;
+        gbc.insets = new Insets(2, 2, 2, 2);
+        
+        // Posição
+        gbc.gridy = linha;
+        gbc.gridx = coluna;
+        
+        // Tamanhos
+        gbc.gridheight = linhasOcupadas;
+        gbc.gridwidth = 1; // Inicialmente, ocupa 1 para a label
+        
+        jpComponentes.add(label, gbc);
+        gbc.gridwidth = colunasOcupadas; // Tamanho do input passado na classe
+        gbc.gridy++;
+        jpComponentes.add(textField, gbc);
     }
 
     public void incluir() {}
