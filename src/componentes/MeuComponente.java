@@ -8,4 +8,6 @@ public interface MeuComponente {
     public String getDica();
 
     public Boolean eObrigatorio();
+
+    public Boolean eValido();
 }

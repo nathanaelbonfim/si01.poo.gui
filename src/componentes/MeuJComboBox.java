@@ -35,4 +35,9 @@ public class MeuJComboBox extends JComboBox implements MeuComponente {
     public Boolean eObrigatorio() {
         return obrigatorio;
     }
+
+    @Override
+    public Boolean eValido() {
+        return false;
+    }
 }

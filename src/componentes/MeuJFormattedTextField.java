@@ -1,20 +1,27 @@
 package componentes;
 
-import javax.swing.JTextField;
+import javax.swing.JFormattedTextField;
+import javax.swing.text.MaskFormatter;
 
 import java.awt.Color;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-public class MeuJTextField extends JTextField implements MeuComponente, FocusListener {
+public class MeuJFormattedTextField extends JFormattedTextField implements MeuComponente, FocusListener {
     private String dica;
     private Boolean obrigatorio;
 
-    public MeuJTextField(int tamanho, String dica, Boolean obrigatorio) {
-        super(tamanho);
+    public MeuJFormattedTextField(int tamanho, String formato, String dica, Boolean obrigatorio) {
 
-        this.dica = dica;
-        this.obrigatorio = obrigatorio;
+        try {
+            MaskFormatter mf = new MaskFormatter(formato);
+            mf.install(this);
+            setColumns(tamanho);
+            this.dica = dica;
+            this.obrigatorio = obrigatorio;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         this.addFocusListener(this);
     }
@@ -42,11 +49,12 @@ public class MeuJTextField extends JTextField implements MeuComponente, FocusLis
     @Override
     public void focusGained(FocusEvent fe) {
         setBackground(Color.yellow);
+        setCaretPosition(0);
     }
 
     @Override
     public void focusLost(FocusEvent fe) {
-        if (eObrigatorio() && getText().equals("")) {
+        if (eObrigatorio() && getText().equals("") || (!eValido())) {
             setBackground(Color.red);
         } else {
             setBackground(Color.white);
@@ -55,6 +63,6 @@ public class MeuJTextField extends JTextField implements MeuComponente, FocusLis
 
     @Override
     public Boolean eValido() {
-        return false;
+        return true;
     }
 }
